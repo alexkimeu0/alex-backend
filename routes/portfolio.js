@@ -16,11 +16,13 @@ router.route("/").get((req, res) => {
 
 // Add a project
 router.route("/add").post((req, res) => {
-	const { title, image, technologies } = req.body;
+	const { title, image, technologies, url } = req.body;
 	const project = new Project({
 		title,
 		image,
 		technologies,
+		url,
+
 	});
 
 	project
@@ -36,7 +38,7 @@ router.route("/add").post((req, res) => {
 // Update project
 router.route("/:id").put((req, res) => {
 	const { id } = req.params;
-	const { title, image, technologies } = req.body;
+	const { title, image, technologies, url } = req.body;
 	const query = { _id: id };
 
 	const newValues = {

@@ -16,12 +16,13 @@ router.route("/").get((req, res) => {
 
 // Add a resume
 router.route("/add").post((req, res) => {
-	const { title, company, timeline, description } = req.body;
+	const { title, company, timeline, description, education } = req.body;
 	const resume = new Resume({
 		title,
 		company,
 		timeline,
 		description,
+		education,
 	});
 
 	resume
@@ -37,7 +38,7 @@ router.route("/add").post((req, res) => {
 // Update project
 router.route("/:id").put((req, res) => {
 	const { id } = req.params;
-	const { title, company, timeline, description } = req.body;
+	const { title, company, timeline, description, education } = req.body;
 	const query = { _id: id };
 
 	const newValues = {
@@ -45,6 +46,7 @@ router.route("/:id").put((req, res) => {
 		company,
 		timeline,
 		description,
+		education,
 	};
 
 	Resume.updateOne(query, newValues, (err, result) => {

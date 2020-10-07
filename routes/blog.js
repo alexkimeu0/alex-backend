@@ -29,6 +29,15 @@ router.route("/add").post((req, res) => {
 		);
 });
 
+// Return a single post
+router.route("/:id").get((req, res) => {
+	const { id } = req.params;
+	const query = { _id: id };
+	Post.findOne(query)
+		.then((post) => res.json(post))
+		.catch((err) => res.status(400).json({ Error: err }));
+});
+
 // Update post
 router.route("/:id").put((req, res) => {
 	const { id } = req.params;

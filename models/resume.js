@@ -8,6 +8,7 @@ const resumeSchema = new Schema(
 		company: { type: String, required: true },
 		timeline: { type: String, required: true },
 		description: { type: String, required: true },
+		education: { type: Boolean, default: true },
 	},
 	{
 		timestamps: true,
